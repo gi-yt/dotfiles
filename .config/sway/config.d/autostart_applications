@@ -1,0 +1,14 @@
+# Auth with polkit-gnome:
+exec /usr/lib/polkit-gnome/*-authentication-agent-1
+
+# Desktop notifications
+exec mako
+exec emacs --daemon
+# Start up a GPG agent
+exec eval $(gpg-agent --daemon) &
+# GTK3 applications take a long time to start
+# exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+# Dynamic Tiling
+exec ~/.config/sway/scripts/i3ipc-dynamic-tiling
