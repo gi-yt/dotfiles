@@ -15,7 +15,7 @@ It is at https://github.com/gi-yt/dotfiles-old
 * How to install
 This config uses stow.
 
-So after installing stow, you can do ~stow .~ in the ~~/dotfiles~ directory which would symlink my configs to the right place in your home directory.
+So after installing stow, you can do ~stow .~ in the ~/dotfiles directory directory which would symlink my configs to the right place in your home directory.
 
 If you have the deps sway and bash will work out of the box.
 
