@@ -9,6 +9,9 @@ This contains my
 - Waybar Config
 - Swaylock Config
 - BASH Config
+* Quick Note
+I had a repo with my old dotfiles which has now been archived due to me using very bad git practices.
+It is at https://github.com/gi-yt/dotfiles-old
 * How to install
 This config uses stow.
 
@@ -63,3 +66,10 @@ Without systemd its a pain TBH.
 - [[https://pypi.org][Pip]] and [[https://www.npmjs.com/][NPM]] (For eaf install script)
 - [[https://github.com/tonsky/FiraCode][Fira Code]] (Font)
 - [[https://www.joypixels.com/][Joypixels]] (Unicode font)
+** BASH
+- [[https://github.com/ogham/exa][exa]] (ls replacement with more bling)
+- [[cli.github.com][github-cli]] (git authentication)
+- [[https://github.com/sharkdp/bat][bat]] (less alternative which is used for man pages)
+- [[https://starship.rs][starship]] (prompt)
+- [[https://github.com/akinomyoga/ble.sh/][ble.sh]] (noice completions)
+- [[https://gitlab.com/dwt1/shell-color-scripts][shell-color-scripts]] (ascii art on startup)
