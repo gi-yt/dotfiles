@@ -1,0 +1,65 @@
+#+TITLE: My Dotfiles
+#+AUTHOR: Arya K
+* What does this contain
+This contains my
+- Emacs config
+- Sway Config
+- Wofi Config
+- Mako Config
+- Waybar Config
+- Swaylock Config
+- BASH Config
+* How to install
+This config uses stow.
+
+So after installing stow, you can do ~stow .~ in the ~~/dotfiles~ directory which would symlink my configs to the right place in your home directory.
+
+If you have the deps sway and bash will work out of the box.
+
+But for emacs you also need to execute these commands
+
+M-x all-the-icons-install-fonts ;; For all-the-icons fonts
+
+M-x vterm-module-compile ;; For vterm
+
+M-x emojify-mode ;; For emoji support
+
+and you also need to get [[https://github.com/emacs-eaf/emacs-application-framework][eaf]] from github
+* Dependencies
+I use many small scripts.
+
+Most of those are in the scripts directory of the specific config.
+
+For the rest I will list them here
+** Sway
+- [[https://swaywm.org][sway]] (The window manager itself)
+- [[https://wayland.freedesktop.org/xserver.html][XWayland]] (Xorg apps compatibility)
+- [[https://github.com/Alexays/Waybar/][Waybar]] (The bar)
+- [[https://github.com/swaywm/swaybg][swaybg]] (For setting the wallpaper)
+- [[https://github.com/swaywm/swaylock][swaylock]] (For screenlock functionality)
+- [[https://github.com/emersion/grim][grim]], [[https://github.com/swaywm/sway/blob/master/contrib/grimshot][grimshot]] (For screenshotting functionality)
+- [[https://github.com/Hummer12007/brightnessctl][brightnessctl]] (For adjusting the brightness in a laptop)
+- [[https://github.com/pulseaudio/pavucontrol][pavucontrol]] (For audio settings. It is executed when you click on the audio widget in waybar)
+- [[https://github.com/cdemoulins/pamixer][pamixer]] (Audio control)
+- [[https://alacritty.org][Alacritty]] (Default Terminal Emulator in my config)
+- [[https://github.com/bugaevc/wl-clipboard][wl-clipboard]] (Clipboard utility)
+- [[https://github.com/maximbaz/wl-clipboard-manager][wl-clipboard-manager]] (clipboard history for wl-clipboard)
+- [[https://github.com/jgmdev/wl-color-picker][wl-color-picker]] (color picker)
+- [[https://hg.sr.ht/~scoopta/wofi][Wofi]] (The launcher used for a lot of scripts like powermenu)
+- [[https://github.com/ammen99/wf-recorder][wf-recorder]] (FFMpeg like recorder for wayland)
+- [[https://design.ubuntu.com/font/][Ubuntu Font Family]] (Waybar Font)
+- [[https://www.jetbrains.com/lp/mono/][Jetbrains Mono]] (Font for waybar)
+- [[https://fonts.google.com/noto][Noto Fonts Emoji]] (For weather widget)
+- [[Noto Sans][Noto Sans]] (For sway)
+- [[https://github.com/horst3180/arc-theme][arc-gtk-theme]] (For app theming + waybar)
+- [[https://github.com/keeferrourke/capitaine-cursors][capitaine-cursors]] (For cursor theming)
+You will also need pipewire and xdg-desktop-portal for screensharing.
+
+If you use systemd, no configuration is needed after install as my autostart will take care of everything.
+
+Without systemd its a pain TBH.
+** Emacs
+- [[https://cmake.org/][Cmake]] and [[https://www.gnu.org/software/libtool/][Libtool]] (For vterm)
+- [[https://pypi.org][Pip]] and [[https://www.npmjs.com/][NPM]] (For eaf install script)
+- [[https://github.com/tonsky/FiraCode][Fira Code]] (Font)
+- [[https://www.joypixels.com/][Joypixels]] (Unicode font)
