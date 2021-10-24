@@ -17,9 +17,9 @@ This config uses stow.
 
 So after installing stow, you can do ~stow .~ in the ~/dotfiles directory which would symlink my configs to the right place in your home directory.
 
-If you have the deps sway and bash will work out of the box.
+If you have the deps everything will work out of the box other than emacs.
 
-But for emacs you also need to execute these commands
+For emacs you also need to execute these commands
 
 ~M-x all-the-icons-install-fonts ;; For all-the-icons fonts~
 
