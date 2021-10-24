@@ -21,11 +21,11 @@ If you have the deps sway and bash will work out of the box.
 
 But for emacs you also need to execute these commands
 
-M-x all-the-icons-install-fonts ;; For all-the-icons fonts
+~M-x all-the-icons-install-fonts ;; For all-the-icons fonts~
 
-M-x vterm-module-compile ;; For vterm
+~M-x vterm-module-compile ;; For vterm~
 
-M-x emojify-mode ;; For emoji support
+~M-x emojify-mode ;; For emoji support~
 
 and you also need to get [[https://github.com/emacs-eaf/emacs-application-framework][eaf]] from github
 * Dependencies
