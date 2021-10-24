@@ -38,6 +38,7 @@ For the rest I will list them here
 - [[https://swaywm.org][sway]] (The window manager itself)
 - [[https://wayland.freedesktop.org/xserver.html][XWayland]] (Xorg apps compatibility)
 - [[https://github.com/Alexays/Waybar/][Waybar]] (The bar)
+- [[https://github.com/emersion/mako][Mako]] (Notification Daemon)
 - [[https://github.com/swaywm/swaybg][swaybg]] (For setting the wallpaper)
 - [[https://github.com/swaywm/swaylock][swaylock]] (For screenlock functionality)
 - [[https://github.com/emersion/grim][grim]], [[https://github.com/swaywm/sway/blob/master/contrib/grimshot][grimshot]] (For screenshotting functionality)
