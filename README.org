@@ -67,6 +67,8 @@ Without systemd its a pain TBH.
 - [[https://pypi.org][Pip]] and [[https://www.npmjs.com/][NPM]] (For eaf install script)
 - [[https://github.com/tonsky/FiraCode][Fira Code]] (Font)
 - [[https://www.joypixels.com/][Joypixels]] (Unicode font)
+- [[https://github.com/AlDanial/cloc][cloc]] (LOC counter)
+- [[https://github.com/hunspell/hunspell][hunspell]] and one of its lang packs (Spell Check)
 ** BASH
 - [[https://github.com/ogham/exa][exa]] (ls replacement with more bling)
 - [[cli.github.com][github-cli]] (git authentication)
@@ -74,3 +76,4 @@ Without systemd its a pain TBH.
 - [[https://starship.rs][starship]] (prompt)
 - [[https://github.com/akinomyoga/ble.sh/][ble.sh]] (noice completions)
 - [[https://gitlab.com/dwt1/shell-color-scripts][shell-color-scripts]] (ascii art on startup)
+- [[https://tldr.sh][tldr]] (Better man pages)
