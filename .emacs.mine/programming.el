@@ -167,8 +167,6 @@
   (hrs/append-to-path "~/.cargo/bin")
   (setq rustic-format-on-save t)
   (add-hook 'rustic-mode-hook 'hrs/rustic-mode-hook))
-(define-key rustic-cargo-run-mode-map (kbd "C-i")
-  #'rustic-compile-send-input)
 
 (defun hrs/rustic-mode-hook ()
   "Don't prompt for confirmation before running `rustfmt'."

@@ -38,6 +38,7 @@ export MOZ_ENABLE_WAYLAND=1
 export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_TYPE=wayland
 export WLR_NO_HARDWARE_CURSORS=1
+export QT_QPA_PLATFORM=wayland-egl
 if [ `last $USER | wc -l` -lt 2 ]
 then
     sudo gpm -m /dev/input/mice -t imps2
