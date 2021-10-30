@@ -29,18 +29,25 @@
 ;; Useful for debugging slow emacs
 (use-package esup)
 ;; Do not litter .emacs.d with junk
+(require 'cl-lib)
+(defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
+  "Prevent annoying \"Active processes exist\" query when you quit Emacs."
+  (cl-letf (((symbol-function #'process-list) (lambda ())))
+    ad-do-it))
+(setq kill-buffer-query-functions (delq 'process-kill-buffer-query-function kill-buffer-query-functions))
+
 (use-package no-littering
   :demand t
   :config
-(setq no-littering-etc-directory
-      (expand-file-name "config/" user-emacs-directory))
-(setq no-littering-var-directory
-      (expand-file-name "data/" user-emacs-directory))
-(setq auto-save-file-name-transforms
-      `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-;; or
-(setq custom-file (no-littering-expand-etc-file-name "custom.el")))
+  (setq no-littering-etc-directory
+        (expand-file-name "config/" user-emacs-directory))
+  (setq no-littering-var-directory
+        (expand-file-name "data/" user-emacs-directory))
+  (setq auto-save-file-name-transforms
+        `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
+  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+  ;; or
+  (setq custom-file (no-littering-expand-etc-file-name "custom.el")))
 ;; Treat all themes as safe
 (use-package custom :straight nil
   :config
@@ -470,7 +477,7 @@
 (load "~/.emacs.mine/programming.el")
 (load "~/.emacs.mine/org.el")
 (load "~/.emacs.mine/everything.el")
-
+(load "~/.emacs.mine/exwm.el")
 ;;; Activity Watch
 (use-package activity-watch-mode)
 (global-activity-watch-mode)

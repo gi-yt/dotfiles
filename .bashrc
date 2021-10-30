@@ -110,6 +110,7 @@ alias tb="nc termbin.com 9999"
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 
 colorscript random
+rsfetch -P -d -e -h -H -i -k  -r -s -w -@ -u -U  --packages pacman
 
 # VTERM
 vterm_printf(){
