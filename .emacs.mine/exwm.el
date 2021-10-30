@@ -198,3 +198,19 @@
 (push ?\s-  exwm-input-prefix-keys)
 (define-key exwm-mode-map (kbd "s-SPC") #'exwm-floating-toggle-floating)
 
+;; Windmover
+;; (use-package windmover)
+;; (global-set-key (kbd "<s-tab>") 'windower-switch-to-last-buffer)
+;; (global-set-key (kbd "<s-o>") 'windower-toggle-single)
+;; (global-set-key (kbd "s-\\") 'windower-toggle-split)
+
+;; (global-set-key (kbd "<s-M-left>") 'windower-move-border-left)
+;; (global-set-key (kbd "<s-M-down>") 'windower-move-border-below)
+;; (global-set-key (kbd "<s-M-up>") 'windower-move-border-above)
+;; (global-set-key (kbd "<s-M-right>") 'windower-move-border-right)
+
+;; (global-set-key (kbd "<s-S-left>") 'windower-swap-left)
+;; (global-set-key (kbd "<s-S-down>") 'windower-swap-below)
+;; (global-set-key (kbd "<s-S-up>") 'windower-swap-above)
+;; (global-set-key (kbd "<s-S-right>") 'windower-swap-right)
+

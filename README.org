@@ -68,5 +68,6 @@ Without systemd its a pain TBH.
 - [[https://github.com/sharkdp/bat][bat]] (less alternative which is used for man pages)
 - [[https://starship.rs][starship]] (prompt)
 - [[https://github.com/akinomyoga/ble.sh/][ble.sh]] (noice completions)
+- [[https://github.com/Phate6660/rsfetch][RSFetch]] (System info on startup)
 - [[https://gitlab.com/dwt1/shell-color-scripts][shell-color-scripts]] (ascii art on startup)
 - [[https://tldr.sh][tldr]] (Better man pages)
