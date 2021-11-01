@@ -190,4 +190,5 @@ alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' | column -t | eg
 alias hist='history|grep'
 alias count='find . -type f | wc -l'
 
+alias htop=bpytop
 export GPG_TTY=$(tty)

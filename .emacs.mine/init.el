@@ -493,3 +493,24 @@
 
   (add-to-list 'global-mode-string '("" mode-line-keycast)))
 (keycast-mode)
+;; Holiday list :)
+;; Note: This is pretty specific to myself. So pls change it and remove unnecessary holidays.
+(setq holiday-other-holidays 
+      '(
+        (holiday-fixed 1 1  "New Year")
+        (holiday-fixed 1 14   "Pongal")
+        (holiday-fixed 1 15   "Mattu Pongal")
+        (holiday-fixed 1 26 "Republic Day")
+        (holiday-fixed 2 4   "Ugadi")
+        (holiday-fixed 4 14  "Tamil New Year")
+        (holiday-fixed 5 1  "May Day (Labour Day)")
+        (holiday-fixed 8 15   "Independence Day")
+        (holiday-fixed 8 20  "Varalakshmi Viratham")
+        (holiday-fixed 9 10  "Vinayaka Chaturthi")
+        (holiday-fixed 10 2 "Gandhi Jayanthi")
+        (holiday-fixed 10 14  "Saraswathi Pooja")
+        (holiday-fixed 11 4  "Diwali")
+        (holiday-fixed 11 5  "Diwali")
+        (holiday-fixed 12 25  "Christmas")
+        )
+      )
