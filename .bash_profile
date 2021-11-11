@@ -9,7 +9,6 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XINITRC="${XDG_CONFIG_HOME:-$HOME/.config}/X11/xinitrc"
 export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
 export LESSHISTFILE="-"
-export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/shell/inputrc"
 export ALSA_CONFIG_PATH="$XDG_CONFIG_HOME/alsa/asoundrc"
 export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/password-store"
@@ -29,7 +28,6 @@ export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
-export VIMINIT='let =/home/ak/.config/vim/vimrc | source '
 export QT_QPA_PLATFORMTHEME="gtk2"	# Have QT use gtk2 theme.
 export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
 export AWT_TOOLKIT="MToolkit wmname LG3D"	#May have to install wmname
@@ -38,9 +36,11 @@ export MOZ_ENABLE_WAYLAND=1
 export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_TYPE=wayland
 export WLR_NO_HARDWARE_CURSORS=1
-export QT_QPA_PLATFORM=wayland-egl
 if [ `last $USER | wc -l` -lt 2 ]
 then
     sudo gpm -m /dev/input/mice -t imps2
 fi
 [[ -f ~/.bashrc ]] && . ~/.bashrc
+
+
+if [ -e /home/ak/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ak/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

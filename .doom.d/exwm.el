@@ -1,4 +1,4 @@
-(use-package exwm
+(use-package! exwm
   :init
   (setq mouse-autoselect-window nil
         focus-follows-mouse t
@@ -47,21 +47,10 @@
 
 (defun dw/exwm-init-hook ()
   (with-eval-after-load 'perspective
-    ;; Set up perspective names on initial workspaces
-    (exwm-workspace-switch-create 1)
-    (exwm-workspace-switch-create 2)
-    (exwm-workspace-switch-create 3)
-    (exwm-workspace-switch-create 4)
-    (exwm-workspace-switch-create 5)
-    (exwm-workspace-delete 0)
-    
-    ;; Make workspace 1 be the one where we land at startup
-    (exwm-workspace-switch-create 1))
-  
-  ;; Launch apps that will run in the background
+    ;; Launch apps that will run in the background
   (exwm/run-in-background "dunst")
   (exwm/run-in-background "element-desktop --hidden")
-  (exwm/run-in-background "/usr/lib/polkit-gnome/gnome-authentication-agent-1r")
+  (exwm/run-in-background "/usr/lib/polkit-gnome/gnome-authentication-agent-1")
   (exwm/run-in-background "eval $(gpg-agent daemon)")
   )
 
@@ -91,17 +80,13 @@
           (lambda ()
             (exwm-layout-hide-mode-line)))
 
-(use-package exwm-systemtray :straight nil
+(use-package! exwm-systemtray
   :after (exwm)
   :config
   (exwm-systemtray-enable)
   (setq exwm-systemtray-height 35))
 
 ;; Misc Commands
-
-(defun dw/run-xmodmap ()
-  (interactive)
-  (start-process-shell-command "xmodmap" nil "xmodmap ~/.config/X11/Xmodmap"))
 
 (defun dw/configure-desktop ()
   (interactive)
@@ -136,7 +121,7 @@
  "s-w" 'eaf-open-browser-with-history
  "s-q" 'kill-buffer)
 
-(use-package desktop-environment
+(use-package! desktop-environment
   :after exwm
   :config (desktop-environment-mode)
   :custom
@@ -146,8 +131,6 @@
   (desktop-environment-brightness-normal-decrement "5%-")
   (desktop-environment-screenshot-command "flameshot gui"))
 
-;; This needs a more elegant ASCII banner
-(use-package hydra)
 (defhydra hydra-exwm-move-resize (:timeout 4)
   "Move/Resize Window (Shift is bigger steps, Ctrl moves window)"
   ("j" (lambda () (interactive) (exwm-layout-enlarge-window 10)) "V 10")
@@ -174,6 +157,7 @@
         ([?\s-w] . exwm-workspace-switch)
         ([?\s-x] . exwm-input-toggle-keyboard)
         ([?\s-r] . hydra-exwm-move-resize/body)
+        ([?\s-r] . +hydra/window-nav/body)
         ([?\s-e] . dired-jump)
         ([?\s-Q] . (lambda () (interactive) (kill-buffer)))
         ))
