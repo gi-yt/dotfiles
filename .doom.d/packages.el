@@ -7,7 +7,6 @@
 (package! expand-region)
 (package! super-save)
 (package! keycast)
-(package! activity-watch-mode)
 (package! 0x0)
 (package! multi-vterm)
 (package! imgur :recipe

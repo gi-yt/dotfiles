@@ -99,8 +99,6 @@
 (global-set-key (kbd "M-/") 'comment-line)
 (straight-use-package 'highlight-numbers)
 (add-hook 'prog-mode-hook 'highlight-numbers-mode)
-;;; Activity Watch
-(global-activity-watch-mode)
 ;;; KeyCast
 (after! keycast
   (define-minor-mode keycast-mode
