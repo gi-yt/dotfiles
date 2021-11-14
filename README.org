@@ -2,7 +2,7 @@
 #+AUTHOR: Arya K
 * What does this contain
 This contains my
-- Emacs config
+- Doom Emacs config
 - Sway Config
 - Wofi Config
 - Mako Config
@@ -17,15 +17,9 @@ This config uses stow.
 
 So after installing stow, you can do ~stow .~ in the ~/dotfiles directory which would symlink my configs to the right place in your home directory.
 
-If you have the deps everything will work out of the box other than emacs.
+If you have the deps everything will work out of the box.
 
-For emacs you also need to execute these commands
-
-~M-x all-the-icons-install-fonts ;; For all-the-icons fonts~
-
-~M-x vterm-module-compile ;; For vterm~
-
-~M-x emojify-mode ;; For emoji support~
+For emacs you also need to install doom emacs
 
 and you also need to get [[https://github.com/emacs-eaf/emacs-application-framework][eaf]] from github
 * Dependencies
@@ -56,7 +50,7 @@ You will also need pipewire and xdg-desktop-portal for screensharing.
 If you use systemd, no configuration is needed after install as my autostart will take care of everything.
 
 Without systemd its a pain TBH.
-** Emacs
+** Doom Emacs
 - [[https://cmake.org/][Cmake]] and [[https://www.gnu.org/software/libtool/][Libtool]] (For vterm)
 - [[https://pypi.org][Pip]] and [[https://www.npmjs.com/][NPM]] (For eaf install script)
 - [[https://cdn.joypixels.com/arch-linux/font/6.6.0/joypixels-android.ttf][Joypixels]] (Unicode font)
