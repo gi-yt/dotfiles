@@ -35,3 +35,6 @@
 (package! ement
   :recipe (:host github :repo "alphapapa/ement.el"))
 (package! shrface)
+(package! modus-themes)
+
+(package! pomm)

@@ -224,3 +224,35 @@
               (lambda (&key data &allow-other-keys)
                 (let ((shrface-request-url url))
                   (shrface-html-export-as-org data))))))
+(setq fancy-splash-image "~/.doom.d/stallman.png")
+(setq-hook! 'python-mode-hook +format-with 'html-tidy)
+
+;; Or set it to `:none' to disable formatting
+(setq-hook! 'python-mode-hook +format-with :none)
+;; enable word-wrap (almost) everywhere
+(+global-word-wrap-mode +1)
+(use-package! modus-themes
+  :init
+  ;; Add all your customizations prior to loading the themes
+  (setq modus-themes-italic-constructs t
+        modus-themes-bold-constructs nil
+        modus-themes-mixed-fonts t
+        modus-themes-subtle-line-numbers t
+        modus-themes-intense-markup t
+        modus-themes-tabs-accented t
+        modus-themes-fringes nil ; {nil,'subtle,'intense}
+        modus-themes-mode-line '(3d accented)
+        modus-themes-hl-line '(intense)
+        ;; Options for `modus-themes-prompts' are either nil (the
+        ;; default), or a list of properties that may include any of those
+        ;; symbols: `background', `bold', `gray', `intense', `italic'
+        modus-themes-prompts '(intense bold)
+        modus-themes-completions 'moderate ;; {nil,'moderate,'opinionated}
+        modus-themes-org-blocks 'gray-background ; {nil,'gray-background,'tinted-background}
+
+        modus-themes-region '(bg-only no-extend))
+  ;; (set-face-attribute 'vertico-current nil :underline t :background "#191AB")
+  (modus-themes-load-themes)
+  :config
+  (modus-themes-load-operandi) ;; OR (modus-themes-load-vivendi)
+  :bind ("<f5>" . modus-themes-toggle))

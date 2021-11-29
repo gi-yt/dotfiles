@@ -32,15 +32,6 @@ export QT_QPA_PLATFORMTHEME="gtk2"	# Have QT use gtk2 theme.
 export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
 export AWT_TOOLKIT="MToolkit wmname LG3D"	#May have to install wmname
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
-export MOZ_ENABLE_WAYLAND=1
-export XDG_CURRENT_DESKTOP=sway
-export XDG_SESSION_TYPE=wayland
-export WLR_NO_HARDWARE_CURSORS=1
-if [ `last $USER | wc -l` -lt 2 ]
-then
-    sudo gpm -m /dev/input/mice -t imps2
 fi
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-
-if [ -e /home/ak/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ak/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
