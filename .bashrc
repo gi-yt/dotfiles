@@ -6,7 +6,7 @@ export VISUAL="emacsclient -c -a emacs"           # $VISUAL use Emacs in GUI mod
 ### "bat" as manpager
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
-        export PATH="$HOME/.local/share/cargo/bin:$PATH"
+export PATH="$HOME/.local/share/cargo/bin:$PATH"
 ### PATH
 if [ -d "$HOME/.bin" ] ;
 then PATH="$HOME/.bin:$PATH"
@@ -58,11 +58,11 @@ x ()
 }
 
 alias em="/usr/bin/emacs -nw"
-alias emacs="emacsclient -c -a 'emacs'"
 
 alias ls='exa -hal --color=always --group-directories-first --icons' # my preferred listing
 alias la='ls'
 alias l.='ls | egrep "^\."'
+alias lcd="ls && cd $1"
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
@@ -77,20 +77,7 @@ alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 
 alias merge='xrdb -merge ~/.config/X11/Xresources'
-
-# git
-alias addup='git add -u'
-alias addall='git add .'
-alias branch='git branch'
-alias checkout='git checkout'
-alias clone='git clone'
-alias commit='git commit -m'
-alias fetch='git fetch'
-alias pull='git pull origin'
-alias push='git push origin'
-alias stat='git status'  # 'status' is protected name so using 'stat' instead
-alias tag='git tag'
-alias newtag='git tag -a'
+alias diff="diff -h"
 
 # youtube-dl
 alias yta-aac="youtube-dl --extract-audio --audio-format aac "
@@ -110,7 +97,6 @@ alias tb="nc termbin.com 9999"
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 
 colorscript random
-rsfetch -P -d -e -h -H -i -k  -r -s -w -@ -u -U  --packages pacman
 
 # VTERM
 vterm_printf(){
@@ -161,14 +147,12 @@ if [[ "$INSIDE_EMACS" = 'vterm' ]] \
 
     alias vim="find_file"
 fi
-
+# starship
 eval "$(starship init bash)"
 
 source /usr/share/blesh/ble.sh
 
-alias startx="startx ~/.config/X11/xinitrc"
-
-for command in mount umount sv pacman updatedb su ; do
+for command in mount umount systemctl pacman updatedb su ; do
     alias $command="sudo $command"
 done; unset command
 
@@ -180,19 +164,11 @@ alias .....='cd ../../../../'
 alias .4='cd ../../../../'
 alias .5='cd ../../../../..'
 alias mkdir='mkdir -pv'
-alias path='echo -e ${PATH//:/\\n}'
 
 alias pubip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="sudo ifconfig | grep -Eo 'inet (addr:)?([0-9]*\\.){3}[0-9]*' | grep -Eo '([0-9]*\\.){3}[0-9]*' | grep -v '127.0.0.1'"
-alias ips="sudo ifconfig -a | grep -o 'inet6\\? \\(addr:\\)\\?\\s\\?\\(\\(\\([0-9]\\+\\.\\)\\{3\\}[0-9]\\+\\)\\|[a-fA-F0-9:]\\+\\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 alias pserver="python -m http.server --directory=$1"
 alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' | column -t | egrep ^/dev/ | sort"
-alias hist='history|grep'
-alias count='find . -type f | wc -l'
 
 alias htop=bpytop
 export GPG_TTY=$(tty)
-
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
