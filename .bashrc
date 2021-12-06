@@ -32,8 +32,7 @@ shopt -s extglob
 #ignore upper and lowercase when TAB completion
 bind "set completion-ignore-case on"
 
-x ()
-{
+x () {
     if [ -f $1 ] ; then
         case $1 in
             *.tar.bz2)   tar xjf $1   ;;

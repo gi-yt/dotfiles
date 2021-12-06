@@ -54,16 +54,17 @@
     ("discord" (progn
                  (exwm-workspace-move-window (elken/exwm-get-index 3))
                  (elken/reload-tray)))
+    ("schildichat-desktop" (exwm-workspace-move-window (elken/exwm-get-index 9)))
     ("firefox" (exwm-workspace-move-window (elken/exwm-get-index 2)))))
 
 (defun elken/exwm-init-hook ()
   "Various init processes for exwm"
   ;; Daemon applications
   (elken/run-in-background "nm-applet")
-
+  (elken/run-in-background "~/.screenlayout/*")
   ;; Startup applications
-  (elken/run-in-background "element-desktop --hidden")
-  (elken/run-application "firefox"))
+  (elken/run-application "firefox")
+  (elken/run-in-background "schildichat-desktop"))
 
 (defvar elken/process-alist '())
 

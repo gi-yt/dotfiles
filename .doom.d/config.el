@@ -133,6 +133,8 @@
                         ("vterm-clear-scrollback" vterm-clear-scrollback)))
 ;; Goggles slows down vterm alot for me. Disable it
 (add-hook 'vterm-mode-hook 'my-inhibit-global-goggles-mode)
+(after! vterm
+  (define-key vterm-mode-map (kbd "<C-backspace>") (lambda () (interactive) (vterm-send-key (kbd "C-w")))))
 
 (defun my-inhibit-global-goggles-mode ()
   "Counter-act `my/global-goggles-mode'."
@@ -256,3 +258,8 @@
   :config
   (modus-themes-load-operandi) ;; OR (modus-themes-load-vivendi)
   :bind ("<f5>" . modus-themes-toggle))
+(use-package! info-colors
+  :after info
+  :commands (info-colors-fontify-node)
+  :hook (Info-selection . info-colors-fontify-node))
+(setq  doom-font (font-spec :family "Fira Code" :size 13))

@@ -48,7 +48,7 @@ Arc-Dark Color Scheme
 /* Reset all styles */
 * {
     border: none;
-    border-radius: 0;
+    border-radius: 26;
     min-height: 0;
     margin: 1px;
     padding: 0;
@@ -171,6 +171,7 @@ padding-top:6px;
  
 #workspaces{
 font-size:13px;
+border-radius: 0;
 }
 #workspaces button {
     border-bottom: 3px solid transparent;
@@ -184,17 +185,23 @@ font-size:13px;
         color: #c9545d;
 }
 #workspaces button.current_output {
-     border-bottom: 1px solid  @highlight;
-     margin-bottom: 1px;
-     padding-left:0;
+        /* border-bottom: 1px solid  @highlight; */
+        border-top: 3px solid  @highlight;
+        /* border-left: 1px solid  @highlight; */
+        /* border-right: 1px solid  @highlight; */
+        /* margin-bottom: 1px; */
+        padding-left:0;
 
 } 
 
 
 #workspaces button.focused {
-     border-bottom: 3px solid  @highlight;
-     margin-bottom: 1px;
-     padding-left:0;
+        border-bottom: 3px solid  @highlight;
+        border-top: 3px solid  @highlight;
+        border-left: 3px solid  @highlight;
+        border-right: 3px solid  @highlight;
+        margin-bottom: 1px;
+        padding-left:0;
   }
 #custom-power{
    margin-left:15px;
@@ -220,7 +227,7 @@ window#waybar {
  margin-left: 10px;
  margin-right: 10px;
  background: #404552;
-/* border-bottom: 5px solid rgba(100, 114, 125, 0.5); */
+ /* border-bottom: 5px solid rgba(100, 114, 125, 0.5); */
  color: white;
 }
 

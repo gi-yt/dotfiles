@@ -38,3 +38,4 @@
 (package! modus-themes)
 
 (package! pomm)
+(package! info-colors)

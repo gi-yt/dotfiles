@@ -8,14 +8,14 @@ set $up k
 set $right l
 # Your preferred terminal emulators
 set $term-float alacritty
+for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10
+set $runmenu exec $term-float --class=launcher -e sway-launcher-desktop
+bindsym $mod+d exec $runmenu
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu wofi -c ~/.config/wofi/config -I
-for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10
-set $run exec $term-float --class=launcher -e sway-launcher-desktop
-bindsym $mod+d exec $run
 for_window [app_id="dmenu"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10
 bindsym $mod+c exec wl-clipboard-manager dmenu
 set $powermenu ~/.config/waybar/scripts/power-menu.sh
@@ -188,7 +188,4 @@ bindsym --whole-window --border $mod+shift+button5 resize grow width 5 px or 5 p
 #
     bindsym print exec grimshot --notify save output
     bindsym Shift+print exec ~/.config/sway/scripts/screenshot.sh
-#
-# Keybindings List
-#
-   bindsym $mod+t exec xed ~/.config/sway/cheatsheet
+    focus_follows_mouse always
