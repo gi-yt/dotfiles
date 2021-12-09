@@ -7,13 +7,6 @@
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
-(define-globalized-minor-mode my/global-goggles-mode goggles-mode
-  (lambda () (goggles-mode 1)))
-
-(use-package! goggles
-  :config
-  (setq-default goggles-pulse t)  ;; set to nil to disable pulsing
-  (my/global-goggles-mode))
 
 (setf use-default-font-for-symbols nil)
 (set-fontset-font t 'unicode "Joypixels" nil 'append)
@@ -111,39 +104,16 @@
 (keycast-mode) ;; or run keycast-mode by demand
 ;; Magit Gravatars
 (setq magit-revision-show-gravatars '("^Author:     " . "^Commit:     "))
-;; Magit Keybinds
-(general-define-key
- :prefix "C-c g"
- "g d" '(vc-root-diff :which-key "Give a diff for all modified files")
- "l d" '(vc-diff :which-key "Give a diff for modifications in current file")
- "d" 'vc-next-action
- "l s" '(magit-stage :which-key "Stage current file if not staged")
- "l l"   '(vc-print-log :which-key "Show log for current vc file")
- "r l" '(vc-region-history :which-key "Show the vc history of the current region")
- "g l"   '(magit-log-all :which-key "Show log for the whole project")
- "p" '(vc-push :which-key "Push Commits to remote")
- "s" '(magit-status :which-key "Show status")
- "c" '(magit-commit :which-key "Commit") ;; Need a better way to commit with vc.el until then stickin to magit
- "l a" '(vc-annotate :which-key "Show annotations"))
 (setq which-key-idle-delay 0.8)
 ;; Vterm
 (setq vterm-eval-cmds '(("magit-status-setup-buffer" magit-status-setup-buffer)
                         ("find-file" find-file)
                         ("message" message)
                         ("vterm-clear-scrollback" vterm-clear-scrollback)))
-;; Goggles slows down vterm alot for me. Disable it
-(add-hook 'vterm-mode-hook 'my-inhibit-global-goggles-mode)
 (after! vterm
   (define-key vterm-mode-map (kbd "<C-backspace>") (lambda () (interactive) (vterm-send-key (kbd "C-w")))))
 
-(defun my-inhibit-global-goggles-mode ()
-  "Counter-act `my/global-goggles-mode'."
-  (add-hook 'after-change-major-mode-hook
-            (lambda () (goggles-mode 0))
-            :append :local))
 
-(autoload 'meme "meme.el" "Create a meme from a collection" t)
-(autoload 'meme-file "meme.el" "Create a meme from a file" t)
 ;;; Org
 (setq org-ellipsis "▾")
 (defun up-n-fold ()
@@ -193,44 +163,17 @@
 (use-package! company-box
   :hook (company-mode . company-box-mode))
 
-(use-package! eaf
-  :commands (eaf-open-browser eaf-open find-file)
-  :config
-  (use-package! ctable)
-  (use-package! deferred)
-  (use-package! epc))
+;; (use-package! eaf
+;;   :commands (eaf-open-browser eaf-open find-file)
+;;   :config
+;;   (use-package! ctable)
+;;   (use-package! deferred)
+;;   (use-package! epc))
 (global-set-key (kbd "C-x b") 'consult-buffer)
 
-(use-package! shrface
-  :config
-  (shrface-basic)
-  (shrface-trial)
-  (setq shrface-item-bullet "+")
-  (shrface-default-keybindings) ; setup default keybindings
-  (setq shrface-href-versatile t))
-
-(use-package! eww
-  :init
-  (add-hook 'eww-after-render-hook #'shrface-mode)
-  :config
-  (require 'shrface))
-(defun request-url-as-org (url)
-  (interactive "sRequest url: ")
-  (require 'shrface)
-  (require 'request)
-  (request url
-    :parser 'buffer-string
-    :headers '(("User-Agent" . "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36"))
-    :sync nil
-    :success (cl-function
-              (lambda (&key data &allow-other-keys)
-                (let ((shrface-request-url url))
-                  (shrface-html-export-as-org data))))))
 (setq fancy-splash-image "~/.doom.d/stallman.png")
 (setq-hook! 'python-mode-hook +format-with 'html-tidy)
 
-;; Or set it to `:none' to disable formatting
-(setq-hook! 'python-mode-hook +format-with :none)
 ;; enable word-wrap (almost) everywhere
 (+global-word-wrap-mode +1)
 (use-package! modus-themes
@@ -263,3 +206,9 @@
   :commands (info-colors-fontify-node)
   :hook (Info-selection . info-colors-fontify-node))
 (setq  doom-font (font-spec :family "Fira Code" :size 13))
+;; Bug with Emacs 29 and general.el
+(general-auto-unbind-keys :off)
+(remove-hook 'doom-after-init-modules-hook #'general-auto-unbind-keys)
+
+(lorem-ipsum-use-default-bindings)
+(setq ispell-dictionary "en_GB-large")

@@ -10,7 +10,7 @@ case $selected in
   suspend)
     exec systemctl suspend;;
   reboot)
-    exec systemctl reboot;;
+    exec reboot;;
   shutdown)
     exec systemctl poweroff -i;;
 esac

@@ -27,7 +27,7 @@
        (vertico +icons)           ; the search engine of the future
 
        :ui
-       (exwm +modeline-panel +tray)
+       ;; (exwm +modeline-panel +tray)
        ;;deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs

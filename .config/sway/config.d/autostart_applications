@@ -10,5 +10,9 @@ exec eval $(gpg-agent --daemon) &
 # exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec wl-clipboard-manager daemon
+exec /usr/local/libexec/deja-dup/deja-dup-monitor
+exec kanshi
+exec redshift-gtk  -l 13.08784:80.27847
 # Dynamic Tiling
 exec ~/.config/sway/scripts/i3ipc-dynamic-tiling

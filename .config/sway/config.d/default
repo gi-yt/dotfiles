@@ -52,7 +52,7 @@ exec swayidle -w\
     bindsym $mod+z gaps inner all plus 10
     bindsym $mod+x gaps inner all minus 10
     bindsym $mod+a resize shrink width 10px
-    bindsym $mod+s resize grow 10px
+    bindsym $mod+s resize grow width 10px
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
@@ -188,4 +188,4 @@ bindsym --whole-window --border $mod+shift+button5 resize grow width 5 px or 5 p
 #
     bindsym print exec grimshot --notify save output
     bindsym Shift+print exec ~/.config/sway/scripts/screenshot.sh
-    focus_follows_mouse always
+    focus_follows_mouse yes

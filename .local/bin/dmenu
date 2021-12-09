@@ -54,6 +54,9 @@ while getopts "vp:kr:0f:" OPTION; do
             fzf_args="$fzf_args --read0"
             null_separated=1
             ;;
+	l)
+	    echo "NOT Applicable"
+	    ;;
         f)
             fzf_args="$fzf_args $OPTARG"
             ;;

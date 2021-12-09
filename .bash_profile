@@ -1,6 +1,6 @@
 # I use vterm, but for many things alacritty is better
 export TERMINAL="alacritty"
-export BROWSER="brave-browser"
+export BROWSER="firefox"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export XDG_CONFIG_HOME="$HOME/.config"
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc

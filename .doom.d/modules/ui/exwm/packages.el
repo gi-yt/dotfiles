@@ -4,3 +4,4 @@
 (package! exwm)
 (package! desktop-environment)
 (package! doom-modeline-now-playing)
+(package! counsel)
