@@ -19,7 +19,7 @@ DesktopNames=exwm
 export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus
 export _JAVA_AWT_WM_NOREPARENTING=1
 wmname LG3D
-emacs -mm --with-exwm %s"
+emacs -mm %s"
           (if debug-p
               "--debug-init"
             "")))

@@ -168,6 +168,14 @@ alias pubip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="sudo ifconfig | grep -Eo 'inet (addr:)?([0-9]*\\.){3}[0-9]*' | grep -Eo '([0-9]*\\.){3}[0-9]*' | grep -v '127.0.0.1'"
 alias pserver="python -m http.server --directory=$1"
 alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' | column -t | egrep ^/dev/ | sort"
-
+alias vim=nvim
 alias htop=bpytop
+random() { "tr -dc A-Za-z0-9 </dev/urandom | head -c $1 ; echo ''"; }
+percentage() {
+    read -p "Total Amount: " total
+    read -p "x out of ${total}: " number
+    new=$(echo "scale=2; $number/$total" | bc)
+    ans=$(echo "scale=2; $new*100" | bc)
+    echo $ans
+}
 export GPG_TTY=$(tty)

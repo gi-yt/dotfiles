@@ -1,4 +1,4 @@
-.#+TITLE: My Sway Config
+#+TITLE: My Sway Config
 #+AUTHOR: Arya K
 #+PROPERTY: header-args :tangle config
 #+auto_tangle: t
@@ -36,6 +36,7 @@ input type:touchpad {
 input type:keyboard {
       xkb_layout "us"
       xkb_options caps:backspace
+      xkb_numlock enabled
 }
 focus_follows_mouse yes
 #+end_src
@@ -89,11 +90,11 @@ default_border pixel 1
 #+begin_src conf-space
 ### Idle configuration
 exec swayidle -w\
-    timeout 1070 'swaylock -f -C ~/.config/swaylock/config'\
-    timeout 770 'swaymsg "output * dpms off"' \
-    resume 'swaymsg "output * dpms on"' \
-    before-sleep 'swaylock -C ~/.config/swaylock/config'
-#+end_src
+    timeout 20 'swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc  --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --fade-in 0.2'\
+    timeout 15 'swaymsg "output * dpms off"'\
+    resume 'swaymsg "output * dpms on"'\
+    before-sleep  'swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc  --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --fade-in 0.2'
+    #+end_src
 * Theming
 My config is mostly centred around arc dark but I am trying to change that (slowly)
 ** Borders and gaps
@@ -194,6 +195,16 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+# move workspace to output
+bindsym $mod+Control+Shift+$left  move workspace to output left
+bindsym $mod+Control+Shift+$right move workspace to output right
+bindsym $mod+Control+Shift+$up    move workspace to output up
+bindsym $mod+Control+Shift+$down  move workspace to output down
+# move workspace to output with arrow keys
+bindsym $mod+Control+Shift+Left  move workspace to output left
+bindsym $mod+Control+Shift+Right move workspace to output right
+bindsym $mod+Control+Shift+Up    move workspace to output up
+bindsym $mod+Control+Shift+Down  move workspace to output down
 #+end_src
 ** Workspaces
 #+begin_src conf-space
@@ -299,7 +310,7 @@ for_window [class="qt5ct" instance="qt5ct"] floating enable, resize set width 60
 for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
 for_window [app_id="pamac-manager"] floating enable, resize set width 80 ppt height 70 ppt
 for_window [class="Lxappearance"] floating enable, resize set width 60 ppt height 50 ppt
-
+for_window [class="quickgui"] floating enable
 # set floating for window roles
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
@@ -333,8 +344,9 @@ exec mako
 exec eval $(gpg-agent --daemon) &
 exec wl-clipboard-manager daemon
 exec /usr/local/libexec/deja-dup/deja-dup-monitor # backup
-exec kanshi # autorandr
+exec_always kanshi # autorandr
 exec redshift-gtk  -l 13.08784:80.27847 # Surprise! Redshift works on wayland (atleast with the fork). And no those are just the coordinates of a random place in my city
+exec env RUST_BACKTRACE=1 swayrd > /tmp/swayrd.log 2>&1
 #+end_src
 * Dynamic Tiling
 Coming from DWM/Xmonad family its hard to live without this
@@ -368,3 +380,4 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+semicolon layout toggle tabbed split
 
 #+end_src
+

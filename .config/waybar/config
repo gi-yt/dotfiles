@@ -3,7 +3,7 @@
 "layer": "top",
 "position": "top",
 // If height property would be not present, it'd be calculated dynamically
-"height": 30,
+"height": 48,
 "width" : 10,
 
 "modules-left": [
@@ -98,8 +98,12 @@
     },
 
     "sway/window": {
-        "format": " {}",
-        "max-length": 90
+        "max-length": 90,
+        "format": "{}",
+        "icon-size": 13,
+        "tooltip": false,
+        "on-click": "activate",
+        "on-click-right": "close"
     },
     "sway/workspaces": {
         "persistent_workspaces": {
@@ -143,8 +147,8 @@
     "interval": 3600,
     "exec": "waybar-wttr.py",
     "return-type": "json",
-    "on-click": "alacritty -e curl wttr.in | less -r", 
-//  -r flag is for coloured output
+    "on-click": "alacritty -e curl wttr.in | less -R",
+//  -R flag is for coloured output
 },
 
 "tray": {

@@ -22,3 +22,8 @@
 (package! pomm)
 (package! info-colors)
 (package! lorem-ipsum)
+(package! plz
+  :recipe (:host github :repo "alphapapa/plz.el"))
+
+(package! ement
+  :recipe (:host github :repo "alphapapa/ement.el"))
