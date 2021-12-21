@@ -228,3 +228,4 @@
 
 (lorem-ipsum-use-default-bindings)
 (setq ispell-dictionary "en_GB-large")
+(require 'ucs-normalize)
