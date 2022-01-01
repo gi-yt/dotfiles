@@ -8,14 +8,14 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
 dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 input type:touchpad {
-      dwt enabled
-      tap enabled
-      natural_scroll enabled
+dwt enabled
+tap enabled
+natural_scroll enabled
 }
 input type:keyboard {
-      xkb_layout "us"
-      xkb_options caps:backspace
-      xkb_numlock enabled
+xkb_layout "us"
+xkb_options caps:backspace
+xkb_numlock enabled
 }
 focus_follows_mouse yes
 
@@ -27,7 +27,7 @@ exec "killall wallpaper.sh"
 exec "~/.config/sway/scripts/wallpaper.sh"
 
 bar {
-   swaybar_command waybar
+swaybar_command waybar
 }
 
 xwayland enable
@@ -40,10 +40,10 @@ default_border pixel 1
 
 ### Idle configuration
 exec swayidle -w\
-    timeout 60 'swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc  --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --fade-in 0.2'\
-    timeout 120 'swaymsg "output * dpms off"'\
-    resume 'swaymsg "output * dpms on"'\
-    before-sleep  'swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc  --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --fade-in 0.2'
+timeout 240 'swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc  --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --fade-in 0.2'\
+timeout 120 'swaymsg "output * dpms off"'\
+resume 'swaymsg "output * dpms on"'\
+before-sleep  'swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc  --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --fade-in 0.2'
 
 # Thin borders:
 smart_borders on
@@ -242,17 +242,19 @@ for_window [app_id="firefox"] inhibit_idle fullscreen
 for_window [app_id="Chromium"] inhibit_idle fullscreen
 
 # Auth with polkit-gnome:
-exec /usr/lib/polkit-gnome/*-authentication-agent-1
+  exec /usr/lib/polkit-gnome/*-authentication-agent-1
 
-# Desktop notifications
-exec mako
-# Start up a GPG agent
-exec eval $(gpg-agent --daemon) &
-exec wl-clipboard-manager daemon
-exec /usr/local/libexec/deja-dup/deja-dup-monitor # backup
-exec_always kanshi # autorandr
-exec redshift-gtk  -l 13.08784:80.27847 # Surprise! Redshift works on wayland (atleast with the fork). And no those are just the coordinates of a random place in my city
-exec env RUST_BACKTRACE=1 swayrd > /tmp/swayrd.log 2>&1
+  # Desktop notifications
+  exec mako
+  # Start up a GPG agent
+  exec eval $(gpg-agent --daemon) &
+  exec wl-clipboard-manager daemon
+  exec /usr/local/libexec/deja-dup/deja-dup-monitor # backup
+  exec_always kanshi # autorandr
+  # Redshift does not work with nvidia (wlroots-eglstreams user)
+#  exec redshift-gtk  -l 13.08784:80.27847 # Surprise! Redshift works on wayland (atleast with the fork). And no those are just the coordinates of a random place in my city
+  exec env RUST_BACKTRACE=1 swayrd > /tmp/swayrd.log 2>&1
+  exec libinput-gestures
 
 # start the dynamic tiling.
 exec_always $HOME/.config/sway/scripts/i3ipc-dynamic-tiling --tabbed-hide-polybar true

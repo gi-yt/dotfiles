@@ -39,3 +39,5 @@ export WLR_NO_HARDWARE_CURSORS=1
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
+
+if [ -e /home/ak/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ak/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

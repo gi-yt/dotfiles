@@ -55,7 +55,9 @@
 
 "clock": {
     "interval": 1,
-    "format": "{:%a,%e %B %Y %I:%M:%S %p}",
+    "on-click": "yad --calendar",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "{:%a, %e %B %Y %I:%M:%S %p}"
     },
 
     "cpu": {

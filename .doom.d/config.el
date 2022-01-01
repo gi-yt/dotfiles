@@ -1,7 +1,6 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 (setq user-full-name "Arya K"
       user-mail-address "aryakiran@zohomail.eu")
-(setq doom-theme 'doom-one)
 (setq org-directory "~/org/")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -37,10 +36,6 @@
   :config
   (setq save-place-limit 1000)
   (save-place-mode))
-;; Click On links
-(define-globalized-minor-mode my/global-goto-addr-mode goto-address-mode
-  (lambda () (goto-address-mode 1)))
-(my/global-goto-addr-mode)
 ;;; Movement
 (define-key key-translation-map (kbd "ESC") (kbd "C-g"))
 (global-set-key (kbd "C-s") 'consult-line)
@@ -223,8 +218,8 @@
   :hook (Info-selection . info-colors-fontify-node))
 (setq  doom-font (font-spec :family "Fira Code" :size 13))
 ;; Bug with Emacs 29 and general.el
-(general-auto-unbind-keys :off)
-(remove-hook 'doom-after-init-modules-hook #'general-auto-unbind-keys)
+;;(general-auto-unbind-keys :off)
+;;(remove-hook 'doom-after-init-modules-hook #'general-auto-unbind-keys)
 
 (lorem-ipsum-use-default-bindings)
 (setq ispell-dictionary "en_GB-large")

@@ -18,6 +18,10 @@ if [ -d "$HOME/.local/bin" ] ;
 then PATH="$HOME/.local/bin:$PATH"
 fi
 
+if [ -d "$HOME/.npm-packages/bin" ] ;
+then PATH="$HOME/.npm-packages/bin:$PATH"
+fi
+
 [[ $- != *i* ]] && return
 
 ### SHOPT
@@ -170,7 +174,11 @@ alias pserver="python -m http.server --directory=$1"
 alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' | column -t | egrep ^/dev/ | sort"
 alias vim=nvim
 alias htop=bpytop
+alias gliwebcomp="ssh arya@gnulinuxindia.org sudo gnulinuxindia-website-compile.sh"
 random() { "tr -dc A-Za-z0-9 </dev/urandom | head -c $1 ; echo ''"; }
+matrix() {
+clear && while :;do echo $LINES $COLUMNS $(( $RANDOM % $COLUMNS)) $(printf "\U$(($RANDOM % 500))");sleep 0.05;done|gawk '{a[$3]=0;for (x in a){o=a[x];a[x]=a[x]+1;printf "\033[%s;%sH\033[2;32m%s",o,x,$4;printf "\033[%s;%sH\033[1;37m%s\033[0;0H",a[x],x,$4;if (a[x] >= $1){a[x]=0;} }}'
+}
 percentage() {
     read -p "Total Amount: " total
     read -p "x out of ${total}: " number

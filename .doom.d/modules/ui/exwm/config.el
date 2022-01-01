@@ -64,7 +64,7 @@
   (elken/run-in-background "~/.screenlayout/*")
   ;; Startup applications
   (elken/run-application "firefox")
-  (elken/run-in-background "schildichat-desktop"))
+  )
 
 (defvar elken/process-alist '())
 
