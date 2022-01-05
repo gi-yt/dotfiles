@@ -343,12 +343,14 @@ There are still things that are better floating :(
   # Start up a GPG agent
   exec eval $(gpg-agent --daemon) &
   exec wl-clipboard-manager daemon
+  exec emacs --daemon
   exec /usr/local/libexec/deja-dup/deja-dup-monitor # backup
   exec_always kanshi # autorandr
   # Redshift does not work with nvidia (wlroots-eglstreams user)
 #  exec redshift-gtk  -l 13.08784:80.27847 # Surprise! Redshift works on wayland (atleast with the fork). And no those are just the coordinates of a random place in my city
   exec env RUST_BACKTRACE=1 swayrd > /tmp/swayrd.log 2>&1
   exec libinput-gestures
+  exec schildichat-desktop --hidden --use-gl=desktop
 #+end_src
 * Dynamic Tiling
 Coming from DWM/Xmonad family its hard to live without this
