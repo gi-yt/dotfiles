@@ -175,6 +175,7 @@ alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' | column -t | eg
 alias vim=nvim
 alias htop=bpytop
 alias gliwebcomp="ssh arya@gnulinuxindia.org sudo gnulinuxindia-website-compile.sh"
+alias perwebcomp="ssh root@192.168.0.110 webcomp.sh"
 alias schildichat="schildichat-desktop --use-gl=desktop"
 fcp() { 
 FILE=$1
@@ -192,7 +193,7 @@ percentage() {
     echo $ans
 }
 export GPG_TTY=$(tty)
-
+export QT_QPA_PLATFORM=xcb
 
 # BEGIN_KITTY_SHELL_INTEGRATION
 if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
