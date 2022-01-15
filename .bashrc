@@ -181,7 +181,7 @@ fcp() {
 FILE=$1
 wl-copy -t text/uri-list $FILE
 }
-random() { "tr -dc A-Za-z0-9 </dev/urandom | head -c $1 ; echo ''"; }
+random() { tr -dc A-Za-z0-9 </dev/urandom | head -c ${1:-10}; }
 matrix() {
 clear && while :;do echo $LINES $COLUMNS $(( $RANDOM % $COLUMNS)) $(printf "\U$(($RANDOM % 500))");sleep 0.05;done|gawk '{a[$3]=0;for (x in a){o=a[x];a[x]=a[x]+1;printf "\033[%s;%sH\033[2;32m%s",o,x,$4;printf "\033[%s;%sH\033[1;37m%s\033[0;0H",a[x],x,$4;if (a[x] >= $1){a[x]=0;} }}'
 }
@@ -194,6 +194,7 @@ percentage() {
 }
 export GPG_TTY=$(tty)
 export QT_QPA_PLATFORM=xcb
+
 
 # BEGIN_KITTY_SHELL_INTEGRATION
 if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi

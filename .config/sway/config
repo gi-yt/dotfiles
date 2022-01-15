@@ -50,10 +50,10 @@ smart_borders on
 gaps inner 28
 gaps outer -8
 
-border_images.focused ~/.config/sway/images/focused.png
-border_images.focused_inactive ~/.config/sway/images/focused_inactive.png
-border_images.unfocused ~/.config/sway/images/unfocused.png
-border_images.urgent ~/.config/sway/images/urgent.png
+#border_images.focused ~/.config/sway/images/focused.png
+#border_images.focused_inactive ~/.config/sway/images/focused_inactive.png
+#border_images.unfocused ~/.config/sway/images/unfocused.png
+#border_images.urgent ~/.config/sway/images/urgent.png
 
 # class                 border  bground text    indicator child_border
 client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
@@ -71,13 +71,15 @@ set $left j
 set $down k
 set $up i
 set $right l
-
+#exec ulauncher
 set $term alacritty
-set $runmenu exec $term --class=launcher -e sway-launcher-desktop
+#set $runmenu exec alacritty --class=launcher -e sway-launcher-desktop
+set $runmenu exec ulauncher
 set $powermenu ~/.config/waybar/scripts/power-menu.sh
 set $menu wofi -c ~/.config/wofi/config -I
 
 for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10
+for_window [app_id="ulauncher"] floating enable, sticky enable, border pixel 0
 # Start a floating terminal
 bindsym $mod+Return exec $term
 bindsym $mod+d exec $runmenu
@@ -175,9 +177,8 @@ bindsym print exec grimshot --notify save output
 bindsym Shift+print exec ~/.config/sway/scripts/screenshot.sh
 
 for_window [app_id="dmenu"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10
-bindsym $mod+c exec wl-clipboard-manager dmenu
+bindsym $mod+c exec  clipman pick --tool=wofi
 bindsym $mod+p exec ~/.config/wofi/windows.py
-bindsym Ctrl+Q exec ""
 
 bindsym $mod+Shift+f floating toggle
 floating_modifier $mod normal
@@ -248,7 +249,7 @@ for_window [app_id="Chromium"] inhibit_idle fullscreen
   exec mako
   # Start up a GPG agent
   exec eval $(gpg-agent --daemon) &
-  exec wl-clipboard-manager daemon
+  exec wl-paste -t text --watch clipman store --unix --primary --notify
   exec emacs --daemon
   exec /usr/local/libexec/deja-dup/deja-dup-monitor # backup
   exec_always kanshi # autorandr
@@ -285,3 +286,4 @@ bindsym $mod+Tab workspace back_and_forth
 
 # Toggle layout current container.
 bindsym $mod+semicolon layout toggle tabbed split
+bindsym $mod+o exec env RUST_BACKTRACE=1 swayr execute-swaymsg-command >> /tmp/swayr.log 2>&1
