@@ -1,3 +1,0 @@
-#+/bin/sh
-grimshot save area /tmp/ocr.png
-tesseract /tmp/ocr.png stdout | wl-copy
